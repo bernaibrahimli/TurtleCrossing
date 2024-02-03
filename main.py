@@ -13,6 +13,7 @@ screen.listen()
 player = Player()
 car_manager = CarManager()
 scoreboard = Scoreboard()
+scoreboard.update_sb()
 screen.onkeypress(fun=player.move, key="Up")
 screen.onkeypress(fun=player.down, key="Down")
 game_is_on = True
@@ -31,9 +32,13 @@ while game_is_on:
 
     #level up
     if player.ycor() > 200:
-        player.level_up()
+        player.reset()
+        player.clear()
+        player.__init__()
         car_manager.sped_up()
-        scoreboard.update_sb(player.level)
+        scoreboard.score += 1
+        scoreboard.update_sb()
+
 
 
 screen.exitonclick()

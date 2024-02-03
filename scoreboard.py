@@ -6,13 +6,18 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(-280,-280)
         self.hideturtle()
-        self.level = 1
+        self.score = 0
+        with open("high_score.txt") as data:
+            self.high_score = int(data.read())
         self.color("white")
-        self.write(f"Level: {self.level}", font=('Arial', 20, 'normal'))
-    def update_sb(self, level):
+    def update_sb(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("high_score.txt", mode="w") as data:
+                data.write(f"{self.high_score}")
         self.clear()
         self.color("white")
-        self.write(f"Level: {level}", font=('Arial', 20, 'normal'))
+        self.write(f"Score: {self.score}  High Score: {self.high_score}", font=('Arial', 20, 'normal'))
     def game_over(self):
         game_over = Turtle()
         game_over.penup()

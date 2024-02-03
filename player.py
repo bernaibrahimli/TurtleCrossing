@@ -9,14 +9,9 @@ class Player(Turtle):
         self.color("green yellow")
         self.penup()
         self.goto(0,-270)
-        self.level = 1
     def move(self):
         self.forward(10)
 
     def down(self):
         self.backward(10)
-    def level_up(self):
-        self.level += 1
-        self.goto(0,-270)
-
 
